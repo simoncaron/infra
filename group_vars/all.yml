@@ -42,9 +42,9 @@ dhcpcd_static_ipv4_address: "{{ ansible_default_ipv4.address }}/24"
 dhcpcd_static_ipv4_gateway: "192.168.2.1"
 dhcpcd_static_ipv4_domain_name_server: "1.1.1.1 1.0.0.1 2606:4700:4700::1111"
 
-nfs_exports: 
-- "/export 192.168.2.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
+nfs_exports:
+  - "/export 192.168.2.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
 
 unattended_origins_patterns:
-- "origin=Raspbian,codename=${distro_codename},label=Raspbian"
-- "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation"
+  - "origin=Raspbian,codename=${distro_codename},label=Raspbian"
+  - "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation"
