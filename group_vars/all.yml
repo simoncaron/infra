@@ -1,10 +1,15 @@
 ---
-k3s_version: v1.22.6+k3s1
+k3s_version: v1.22.7+k3s1
 ansible_user: simon
 systemd_dir: /etc/systemd/system
 master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
-extra_server_args: "--disable traefik --disable servicelb --disable local-storage --node-taint CriticalAddonsOnly=true:NoExecute"
-extra_agent_args: "--node-label node.kubernetes.io/role=worker"
+extra_server_args: >
+  --disable traefik
+  --disable servicelb
+  --disable local-storage
+  --node-taint CriticalAddonsOnly=true:NoExecute
+extra_agent_args: >
+  --node-label node.kubernetes.io/role=worker
 
 raspberry_pi_boot_config_options:
   # Set the GPU memory split value.
