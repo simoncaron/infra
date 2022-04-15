@@ -10,3 +10,4 @@ rules:
 
 ignore: |
   galaxy_roles/
+  vars/vault.yml

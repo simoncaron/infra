@@ -9,4 +9,6 @@ roles:
   - name: escalate.dhcpcd
     version: v1.1.0
   - name: escalate.swap
-    version: v1.0.0
+    version: v1.1.0
+  - name: juju4.ipv6
+    version: 1.5.0
