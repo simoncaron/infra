@@ -1,0 +1,12 @@
+---
+roles:
+  - name: geerlingguy.nfs
+    version: 2.0.0
+  - name: geerlingguy.raspberry-pi
+    version: 1.2.0
+  - name: jnv.unattended-upgrades
+    version: v1.12.1
+  - name: escalate.dhcpcd
+    version: v1.1.0
+  - name: escalate.swap
+    version: v1.0.0
