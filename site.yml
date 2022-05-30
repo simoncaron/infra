@@ -1,19 +1,31 @@
 ---
 
 - hosts: k3s_cluster
-  gather_facts: yes
-  become: yes
+  gather_facts: true
+  become: true
+  vars_files:
+    - 'vars/vault.yml'
   roles:
+    - role: juju4.ipv6
     - role: prereq
+    - role: geerlingguy.raspberry-pi
+    - role: escalate.swap
+    - role: escalate.dhcpcd
+    - role: jnv.unattended-upgrades
     - role: download
     - role: raspberrypi
 
 - hosts: master
-  become: yes
+  become: true
+  vars_files:
+    - 'vars/vault.yml'
   roles:
+    - role: geerlingguy.nfs
     - role: k3s/master
 
 - hosts: node
-  become: yes
+  become: true
+  vars_files:
+    - 'vars/vault.yml'
   roles:
     - role: k3s/node

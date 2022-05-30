@@ -7,3 +7,7 @@ rules:
     level: warning
   truthy:
     allowed-values: ['true', 'false', 'yes', 'no']
+
+ignore: |
+  galaxy_roles/
+  vars/vault.yml

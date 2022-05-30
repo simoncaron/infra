@@ -1,0 +1,54 @@
+---
+k3s_version: v1.23.6+k3s1
+ansible_user: simon
+systemd_dir: /etc/systemd/system
+master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+extra_server_args: >
+  --disable traefik
+  --disable servicelb
+  --disable local-storage
+  --node-taint CriticalAddonsOnly=true:NoExecute
+extra_agent_args: >
+  --node-label node.kubernetes.io/role=worker
+raspberry_pi_boot_config_options:
+  # Set the GPU memory split value.
+  - regexp: "^#?gpu_mem"
+    line: "gpu_mem=16"
+  # Disable wi-fi
+  - regexp: "^dtoverlay=disable-wifi"
+    line: "dtoverlay=disable-wifi"
+  # Disable bluetooth
+  - regexp: "^dtoverlay=disable-bt"
+    line: "dtoverlay=disable-bt"
+  # Set gpio fan pin and temp
+  - regexp: "^#?dtoverlay=gpio-fan,gpiopin"
+    line: "dtoverlay=gpio-fan,gpiopin=3,temp=65000"
+  # Set poe fan level 0
+  - regexp: "^#?dtparam=poe_fan_temp0"
+    line: "dtparam=poe_fan_temp0=50000"
+  # Set poe fan level 1
+  - regexp: "^#?dtparam=poe_fan_temp1"
+    line: "dtparam=poe_fan_temp1=60000"
+  # Set poe fan level 2
+  - regexp: "^#?dtparam=poe_fan_temp2"
+    line: "dtparam=poe_fan_temp2=70000"
+  # Set poe fan level 3
+  - regexp: "^#?dtparam=poe_fan_temp3"
+    line: "dtparam=poe_fan_temp3=80000"
+
+raspberry_pi_rc_local_options:
+  # Disable HDMI on startup (for power savings).
+  - regexp: "^/usr/bin/tvservice"
+    line: "/usr/bin/tvservice -o"
+
+dhcpcd_static_ipv4_configuration_enabled: true
+dhcpcd_static_ipv4_address: "{{ ansible_default_ipv4.address }}/24"
+dhcpcd_static_ipv4_gateway: "192.168.2.1"
+dhcpcd_static_ipv4_domain_name_server: "1.1.1.1 1.0.0.1"
+
+nfs_exports:
+  - "/export 192.168.2.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
+
+unattended_origins_patterns:
+  - "origin=Raspbian,codename=${distro_codename},label=Raspbian"
+  - "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation"
