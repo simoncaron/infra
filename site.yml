@@ -15,7 +15,7 @@
     - role: download
     - role: raspberrypi
 
-- hosts: master
+- hosts: k3s_master
   become: true
   vars_files:
     - 'vars/vault.yml'
@@ -23,7 +23,7 @@
     - role: geerlingguy.nfs
     - role: k3s/master
 
-- hosts: node
+- hosts: k3s_node
   become: true
   vars_files:
     - 'vars/vault.yml'

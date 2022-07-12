@@ -1,20 +1,4 @@
 ---
-ansible_user: simon
-
-# download
-k3s_version: v1.23.6+k3s1
-
-# k3s
-systemd_dir: /etc/systemd/system
-master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
-extra_server_args: >
-  --disable traefik
-  --disable servicelb
-  --disable local-storage
-  --node-taint CriticalAddonsOnly=true:NoExecute
-extra_agent_args: >
-  --node-label node.kubernetes.io/role=worker
-
 # geerlingguy.raspberry-pi
 raspberry_pi_boot_config_options:
   # Set the GPU memory split value.
@@ -52,10 +36,6 @@ dhcpcd_static_ipv4_configuration_enabled: true
 dhcpcd_static_ipv4_address: "{{ ansible_default_ipv4.address }}/24"
 dhcpcd_static_ipv4_gateway: "192.168.2.1"
 dhcpcd_static_ipv4_domain_name_server: "1.1.1.1 1.0.0.1"
-
-# geerlingguy.nfs
-nfs_exports:
-  - "/export 192.168.2.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
 
 # jnv.unattended-upgrades
 unattended_origins_patterns:

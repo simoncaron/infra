@@ -1,0 +1,4 @@
+---
+# k3a/node
+extra_agent_args: >
+  --node-label node.kubernetes.io/role=worker

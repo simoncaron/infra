@@ -1,0 +1,11 @@
+---
+# geerlingguy.nfs
+nfs_exports:
+  - "/export 192.168.2.0/24(rw,fsid=0,insecure,no_subtree_check,async,no_root_squash)"
+
+# k3s/master
+extra_server_args: >
+  --disable traefik
+  --disable servicelb
+  --disable local-storage
+  --node-taint CriticalAddonsOnly=true:NoExecute
