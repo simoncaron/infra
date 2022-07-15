@@ -1,0 +1,40 @@
+---
+# geerlingguy.raspberry-pi
+raspberry_pi_boot_config_options:
+  # Set the GPU memory split value.
+  - regexp: "^#?gpu_mem"
+    line: "gpu_mem=16"
+  # Disable wi-fi
+  - regexp: "^dtoverlay=disable-wifi"
+    line: "dtoverlay=disable-wifi"
+  # Disable bluetooth
+  - regexp: "^dtoverlay=disable-bt"
+    line: "dtoverlay=disable-bt"
+
+# geerlingguy.docker
+docker_compose_arch: "aarch64"
+docker_apt_arch: "arm64"
+
+# artis3n.tailscale
+tailscale_args: "--advertise-exit-node --advertise-routes=192.168.2.0/24"
+
+# ironicbadger.docker_compose_generator
+appdata_path: /home/appdata
+docker_compose_generator_output_path: /home/simon
+
+containers:
+  ###
+  # - service_name: tailscale
+  #   active: true
+  #   image: tailscale/tailscale
+  #   network_mode: "host"
+  #   hostname: rpi-vpn-relay-001
+  #   cap_add:
+  #     - NET_ADMIN
+  #   command:
+  #     - tailscaled
+  #   volumes:
+  #     - /var/lib:/var/lib
+  #     - /dev/net/tun:/dev/net/tun
+  #   privileged: true
+  #   restart: unless-stopped

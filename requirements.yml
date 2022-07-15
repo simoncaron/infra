@@ -2,6 +2,8 @@
 roles:
   - name: geerlingguy.nfs
     version: 2.0.0
+  - name: geerlingguy.docker
+    version: 4.2.4
   - name: geerlingguy.raspberry-pi
     version: 1.2.0
   - name: jnv.unattended-upgrades
@@ -12,3 +14,7 @@ roles:
     version: v1.1.0
   - name: juju4.ipv6
     version: 1.5.0
+  - name: ironicbadger.docker_compose_generator
+    version: 1.0.4
+  - name: artis3n.tailscale
+    version: v3.2.2
