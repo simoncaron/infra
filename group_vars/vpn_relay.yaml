@@ -10,6 +10,12 @@ raspberry_pi_boot_config_options:
   # Disable bluetooth
   - regexp: "^dtoverlay=disable-bt"
     line: "dtoverlay=disable-bt"
+  # Disable Power LED
+  - regexp: "^dtparam=pwr_led_trigger=none"
+    line: "dtparam=pwr_led_trigger=none"
+  # Disable Activity LED
+  - regexp: "^dtparam=act_led_trigger=none"
+    line: "dtparam=act_led_trigger=none"
 
 # geerlingguy.docker
 docker_compose_arch: "aarch64"
