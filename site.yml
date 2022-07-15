@@ -35,6 +35,7 @@
   vars_files:
     - 'vars/vault-vpn.yml'
   roles:
+    - role: robertdebock.rsyslog
     - role: geerlingguy.raspberry-pi
     - role: escalate.dhcpcd
     - role: jnv.unattended-upgrades
