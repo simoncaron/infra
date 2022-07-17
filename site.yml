@@ -4,7 +4,7 @@
   gather_facts: true
   become: true
   vars_files:
-    - 'vars/vault.yaml'
+    - 'vars/vault.yml'
   roles:
     - role: geerlingguy.raspberry-pi
     - role: escalate.dhcpcd
@@ -15,7 +15,7 @@
   gather_facts: true
   become: true
   vars_files:
-    - 'vars/vault.yaml'
+    - 'vars/vault.yml'
   roles:
     - role: juju4.ipv6
     - role: prereq
@@ -26,7 +26,7 @@
 - hosts: k3s_master
   become: true
   vars_files:
-    - 'vars/vault.yaml'
+    - 'vars/vault.yml'
   roles:
     - role: geerlingguy.nfs
     - role: k3s/master
@@ -34,7 +34,7 @@
 - hosts: k3s_node
   become: true
   vars_files:
-    - 'vars/vault.yaml'
+    - 'vars/vault.yml'
   roles:
     - role: k3s/node
 
