@@ -1,24 +1,32 @@
 ---
 
+- hosts: raspberry_pi
+  gather_facts: true
+  become: true
+  vars_files:
+    - 'vars/vault.yaml'
+  roles:
+    - role: geerlingguy.raspberry-pi
+    - role: escalate.dhcpcd
+    - role: jnv.unattended-upgrades
+    - role: robertdebock.rsyslog
+
 - hosts: k3s_cluster
   gather_facts: true
   become: true
   vars_files:
-    - 'vars/vault-k3s.yaml'
+    - 'vars/vault.yaml'
   roles:
     - role: juju4.ipv6
     - role: prereq
-    - role: geerlingguy.raspberry-pi
     - role: escalate.swap
-    - role: escalate.dhcpcd
-    - role: jnv.unattended-upgrades
     - role: download
     - role: raspberrypi
 
 - hosts: k3s_master
   become: true
   vars_files:
-    - 'vars/vault-k3s.yaml'
+    - 'vars/vault.yaml'
   roles:
     - role: geerlingguy.nfs
     - role: k3s/master
@@ -26,19 +34,15 @@
 - hosts: k3s_node
   become: true
   vars_files:
-    - 'vars/vault-k3s.yaml'
+    - 'vars/vault.yaml'
   roles:
     - role: k3s/node
 
 - hosts: vpn_relay
   become: true
   vars_files:
-    - 'vars/vault-vpn.yml'
+    - 'vars/vault.yml'
   roles:
-    - role: robertdebock.rsyslog
-    - role: geerlingguy.raspberry-pi
-    - role: escalate.dhcpcd
-    - role: jnv.unattended-upgrades
     - role: artis3n.tailscale
     - role: geerlingguy.docker
     - role: ironicbadger.docker_compose_generator

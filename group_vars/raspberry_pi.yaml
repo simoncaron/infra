@@ -1,4 +1,5 @@
 ---
+# geerlingguy.raspberry-pi
 raspberry_pi_rc_local_options:
   # Disable HDMI on startup (for power savings).
   - regexp: "^/usr/bin/tvservice"
