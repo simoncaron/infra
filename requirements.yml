@@ -17,6 +17,6 @@ roles:
   - name: ironicbadger.docker_compose_generator
     version: 1.0.4
   - name: artis3n.tailscale
-    version: v3.2.2
+    version: v3.2.3
   - name: robertdebock.rsyslog
     version: 4.6.1
