@@ -1,4 +1,7 @@
 ---
+collections:
+  - community.docker
+
 roles:
   - name: geerlingguy.nfs
     version: 2.0.0
@@ -20,3 +23,5 @@ roles:
     version: v3.2.3
   - name: robertdebock.rsyslog
     version: 4.6.1
+  - name: geerlingguy.pip
+    version: 2.2.0

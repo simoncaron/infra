@@ -46,3 +46,12 @@
     - role: artis3n.tailscale
     - role: geerlingguy.docker
     - role: ironicbadger.docker_compose_generator
+    - role: geerlingguy.pip
+    - role: cloudflare
+      become: false
+  tasks:
+    - name: Create and start services
+      community.docker.docker_compose:
+        project_src: /home/{{ ansible_user }}
+        pull: true
+        recreate: always

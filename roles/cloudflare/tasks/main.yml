@@ -1,0 +1,13 @@
+---
+
+- name: Create dir for service override
+  file:
+    path: /home/simon/appdata/swag/config/dns-conf/
+    state: directory
+    mode: "0755"
+
+- name: Create cloudflare.ini
+  template:
+    src: files/cloudflare.ini.j2
+    dest: /home/simon/appdata/swag/config/dns-conf/cloudflare.ini
+    mode: "0644"

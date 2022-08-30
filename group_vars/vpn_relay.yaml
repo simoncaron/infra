@@ -24,6 +24,11 @@ docker_apt_arch: "arm64"
 # artis3n.tailscale
 tailscale_args: "--advertise-exit-node --advertise-routes=192.168.2.0/24"
 
+# geerlingguy.pip
+pip_install_packages:
+  - name: docker
+  - name: docker-compose
+
 # ironicbadger.docker_compose_generator
 appdata_path: /home/{{ ansible_user }}/appdata
 docker_compose_generator_output_path: /home/{{ ansible_user }}
