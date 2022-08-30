@@ -11,3 +11,9 @@
     src: files/cloudflare.ini.j2
     dest: /home/simon/appdata/swag/config/dns-conf/cloudflare.ini
     mode: "0644"
+
+- name: Create adguard proxy conf
+  template:
+    src: files/adguard.subdomain.conf
+    dest: /home/simon/appdata/swag/config/nginx/proxy-confs/adguard.subdomain.conf
+    mode: "0644"

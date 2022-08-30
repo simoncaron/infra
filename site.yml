@@ -47,8 +47,7 @@
     - role: geerlingguy.docker
     - role: ironicbadger.docker_compose_generator
     - role: geerlingguy.pip
-    - role: cloudflare
-      become: false
+    - role: swag
   tasks:
     - name: Create and start services
       community.docker.docker_compose:
